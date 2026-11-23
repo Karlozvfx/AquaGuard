@@ -108,4 +108,4 @@ Alcance actual y próximos pasos
 - Integración con sensores reales (pluviómetro y nivel de depósito) mediante las clases `Actuadores` y `SensorLluvia`.
 
 Licencia
-Proyecto académico. Define aquí la licencia que prefiera el equipo (p. ej. MIT).
+MIT
