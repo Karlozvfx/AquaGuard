@@ -1,9 +1,9 @@
-# 💧 AquaGuard — Sistema inteligente de gestión hídrica y prevención de riesgos urbanos para Villa El Salvador
+AquaGuard — Sistema inteligente de gestión hídrica y prevención de riesgos urbanos para Villa El Salvador
 
 Prototipo funcional que usa el **pronóstico de lluvia de SENAMHI** para decidir cada día si se riega con agua
 convencional o con **agua de lluvia almacenada**, y que registra, calcula y muestra cuánta agua potable se ahorra.
 
-## 👥 Equipo
+Equipo
 
 | Nombre | Rol |
 |---|---|
@@ -11,7 +11,7 @@ convencional o con **agua de lluvia almacenada**, y que registra, calcula y mues
 | Chumpitaz Quin, Carlos | Frontend / UI |
 | Bendezu Champiama, Víctor | API GitHub / Integración |
 
-## 🎯 Problema y solución
+Problema y solución
 
 Villa El Salvador (Lima Sur) tiene acceso desigual al agua potable: muchas familias dependen de camiones cisterna
 y el riego de áreas verdes y huertos compite con el consumo humano. Al mismo tiempo, no existe una herramienta
@@ -31,7 +31,7 @@ sencilla que ayude a decidir cuándo conviene captar y usar agua de lluvia en lu
 > los datos simulados se marcan siempre como **ESTIMADO / SIMULADO**; un día sin registro se muestra como
 > «sin registro», no como 0.
 
-## 🌍 Objetivos de Desarrollo Sostenible (ODS)
+Objetivos de Desarrollo Sostenible (ODS)
 
 | ODS | Aporte del proyecto |
 |---|---|
@@ -39,7 +39,7 @@ sencilla que ayude a decidir cuándo conviene captar y usar agua de lluvia en lu
 | **ODS 11 — Ciudades y comunidades sostenibles** | Gestión eficiente del recurso hídrico urbano y base de datos climática local para decisiones comunitarias. |
 | **ODS 13 — Acción por el clima** | Usa información climática oficial para adaptarse a la variabilidad de lluvias y registrar su historial. |
 
-## 🧰 Tecnologías
+Tecnologías
 
 | Capa | Tecnología |
 |---|---|
@@ -53,7 +53,7 @@ sencilla que ayude a decidir cuándo conviene captar y usar agua de lluvia en lu
 Estructura: `clima/` (predicción y datos SENAMHI) · `servicios/` (motor, ahorro, simulador) · `sistemas/` (riego, succión,
 sensores, hardware) · `base_datos/` (SQLite) · `interfaz/` (pantallas) · `datos/` (CSV) · `docs/` (documentación técnica).
 
-## ⚙️ Instalación
+Instalación
 
 Requisitos: **Python 3.10 o superior** (con tkinter; en Windows y macOS ya viene incluido).
 
@@ -72,9 +72,9 @@ pip install -r requirements.txt
 - VS Code: elige el intérprete del entorno (`Ctrl+Shift+P` → *Python: Select Interpreter* → `.venv`). Si ves
   `No module named 'customtkinter'`, estás usando otro Python distinto al que instalaste los paquetes.
 
-## ▶️ Uso
+Uso
 
-### Demo con interfaz gráfica
+Demo con interfaz gráfica
 ```bash
 python main.py
 ```
@@ -82,7 +82,7 @@ python main.py
 2. Abre **Calendario** (clic en un día para ver el detalle), **Estadísticas** y **Comparar años**.
 3. Pulsa **Evaluar hoy** para ver la decisión con el pronóstico de `datos/senamhi/pronostico.csv`.
 
-### Línea de comandos
+Línea de comandos
 ```bash
 python main.py --simular 2025        # año completo con datos SIMULADOS
 python main.py --resumen 2025        # resumen mensual/anual guardado
@@ -90,7 +90,7 @@ python main.py --hoy                 # decisión de hoy con el pronóstico SENAM
 python main.py --importar-historico  # carga datos/senamhi/historico.csv
 ```
 
-### Configuración y datos reales
+Configuración y datos reales
 La primera ejecución crea `config.json` (localidad, umbral, área de captación, capacidad del depósito, demanda de riego).
 Coloca los CSV oficiales de SENAMHI en `datos/senamhi/`:
 - `pronostico.csv` → `fecha,prob_lluvia,precipitacion_mm,temperatura_c`
@@ -99,7 +99,7 @@ Coloca los CSV oficiales de SENAMHI en `datos/senamhi/`:
 Más detalle del algoritmo, el cálculo del ahorro y la conexión de hardware (ESP32/Arduino) en
 [`docs/DOCUMENTACION_TECNICA.md`](docs/DOCUMENTACION_TECNICA.md).
 
-## ⚠️ Alcance actual y próximos pasos
+Alcance actual y próximos pasos
 
 - El prototipo funciona hoy en **modo simulación** (sin sensores físicos). El perfil de lluvia simulado es un ejemplo
   genérico y **no representa el clima de Villa El Salvador**; con los CSV reales de SENAMHI se usan datos oficiales.
@@ -107,5 +107,5 @@ Más detalle del algoritmo, el cálculo del ahorro y la conexión de hardware (E
   aprovechando el mismo pronóstico y el historial ya almacenado.
 - Integración con sensores reales (pluviómetro y nivel de depósito) mediante las clases `Actuadores` y `SensorLluvia`.
 
-## 📄 Licencia
+Licencia
 Proyecto académico. Define aquí la licencia que prefiera el equipo (p. ej. MIT).
