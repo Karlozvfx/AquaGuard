@@ -1,0 +1,5 @@
+# El núcleo solo usa la biblioteca estándar de Python.
+# 'requests' es opcional: solo se usa si configuras una URL de datos.
+requests>=2.31
+customtkinter>=5.2
+matplotlib>=3.8
