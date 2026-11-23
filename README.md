@@ -35,9 +35,10 @@ Objetivos de Desarrollo Sostenible (ODS)
 
 | ODS | Aporte del proyecto |
 |---|---|
+| **ODS 3 — Salud y bienestar** | Usa datos epidemiológicos oficiales para prevenir brotes de enfermedades y registrar el historial sanitario. |
 | **ODS 6 — Agua limpia y saneamiento** | Reduce el uso de agua potable en riego aprovechando agua de lluvia; mide el ahorro en litros. |
 | **ODS 11 — Ciudades y comunidades sostenibles** | Gestión eficiente del recurso hídrico urbano y base de datos climática local para decisiones comunitarias. |
-| **ODS 13 — Acción por el clima** | Usa información climática oficial para adaptarse a la variabilidad de lluvias y registrar su historial. |
+
 
 Tecnologías
 
