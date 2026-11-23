@@ -11,13 +11,15 @@ from sistemas.hardware import ActuadoresSimulados
 from sistemas.sensores import SensorLluviaSimulado
 
 
-def evaluar_hoy(cfg, repo):
+def evaluar_hoy(cfg, repo, hoy=None):
     """
     Evalúa el día de hoy con el pronóstico SENAMHI (archivo/URL configurado).
     Devuelve (ok, mensaje). Sin sensor real, la lluvia observada se asume 0 (no se inventa).
     Si hoy ya fue registrado NO se vuelve a ejecutar: duplicaría el consumo del depósito.
+    `hoy` ('YYYY-MM-DD') es opcional: la versión web lo pasa con la fecha de Lima, porque el
+    servidor puede estar en otra zona horaria.
     """
-    hoy = date.today().isoformat()
+    hoy = hoy or date.today().isoformat()
     if repo.dia(hoy) is not None:
         return False, f"El día {hoy} ya fue evaluado y registrado."
     pron = SenamhiCliente(cfg).obtener_pronostico(hoy)

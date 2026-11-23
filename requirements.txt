@@ -1,5 +1,7 @@
-# El núcleo solo usa la biblioteca estándar de Python.
-# 'requests' es opcional: solo se usa si configuras una URL de datos.
-requests>=2.31
-customtkinter>=5.2
+# Dependencias de la versión WEB (Streamlit). Es lo que lee Streamlit Community Cloud.
+# El núcleo (clima/, servicios/, sistemas/, base_datos/) solo usa la biblioteca estándar de Python.
+streamlit>=1.67
 matplotlib>=3.8
+pandas>=2.0
+# 'requests' es opcional: solo se usa si configuras una URL de datos (url_pronostico_csv).
+requests>=2.31

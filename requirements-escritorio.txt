@@ -1,0 +1,4 @@
+# Dependencias de la app de ESCRITORIO (python main.py). La versión web usa requirements.txt.
+requests>=2.31
+customtkinter>=5.2
+matplotlib>=3.8

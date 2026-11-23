@@ -35,17 +35,16 @@ Objetivos de Desarrollo Sostenible (ODS)
 
 | ODS | Aporte del proyecto |
 |---|---|
-| **ODS 3 — Salud y bienestar** | Usa datos epidemiológicos oficiales para prevenir brotes de enfermedades y registrar el historial sanitario. |
 | **ODS 6 — Agua limpia y saneamiento** | Reduce el uso de agua potable en riego aprovechando agua de lluvia; mide el ahorro en litros. |
 | **ODS 11 — Ciudades y comunidades sostenibles** | Gestión eficiente del recurso hídrico urbano y base de datos climática local para decisiones comunitarias. |
-
+| **ODS 13 — Acción por el clima** | Usa información climática oficial para adaptarse a la variabilidad de lluvias y registrar su historial. |
 
 Tecnologías
 
 | Capa | Tecnología |
 |---|---|
 | Lenguaje | Python 3.10+ |
-| Interfaz (frontend) | CustomTkinter |
+| Interfaz (frontend) | CustomTkinter (escritorio) · Streamlit (web) |
 | Gráficos | matplotlib |
 | Base de datos | SQLite (incluida en Python) |
 | Datos climáticos | CSV de SENAMHI (pronóstico e histórico); `requests` opcional si hay una URL oficial |
@@ -66,7 +65,8 @@ python -m venv .venv
 # Windows:        .venv\Scripts\activate
 # Linux / macOS:  source .venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements.txt            # versión web (Streamlit)
+pip install -r requirements-escritorio.txt # solo si usarás la app de escritorio (CustomTkinter)
 ```
 
 - Linux: si falta tkinter → `sudo apt install python3-tk`.
@@ -90,6 +90,30 @@ python main.py --resumen 2025        # resumen mensual/anual guardado
 python main.py --hoy                 # decisión de hoy con el pronóstico SENAMHI
 python main.py --importar-historico  # carga datos/senamhi/historico.csv
 ```
+
+Versión web (Streamlit)
+```bash
+streamlit run streamlit_app.py
+```
+Abre http://localhost:8501. Tiene las mismas 4 pantallas que la app de escritorio (Dashboard, Calendario,
+Estadísticas, Comparar años) y reutiliza el mismo núcleo y los mismos gráficos. La interfaz web vive en
+`interfaz_web/`; la de escritorio (`interfaz/`) sigue funcionando con `python main.py`.
+
+Publicarla en internet (Streamlit Community Cloud, gratis)
+1. Sube el repositorio a GitHub (`git add . && git commit -m "Versión web" && git push`).
+2. En https://share.streamlit.io elige **Create app**, selecciona tu repositorio y la rama `main`, y como
+   *Main file path* escribe `streamlit_app.py`.
+3. En *Advanced settings* elige una versión de Python 3.10–3.13 (si la nube aún no ofrece la que usas en tu PC).
+4. Pulsa **Deploy**. En el primer ingreso pulsa **Cargar demostración** en el Dashboard.
+
+Notas importantes para la versión publicada:
+- **Los datos no son permanentes.** La nube puede reiniciar el servidor (p. ej. tras un tiempo de inactividad) y se pierden los archivos creados mientras corría
+  (`datos/sistema.db`, `config.json`). Tras un reinicio hay que volver a cargar la demostración. Para datos
+  permanentes habría que migrar a una base externa (p. ej. Supabase/Postgres).
+- **Cualquier visitante comparte la misma base de datos.** Para que solo tú puedas modificar datos, en
+  *Settings → Secrets* de la app agrega `ADMIN_PASSWORD = "tu-clave"`: los botones «Evaluar hoy», «Simular año»
+  y «Cargar demostración» pedirán esa clave en la barra lateral. Sin ese secreto, quedan abiertos.
+- `datos/senamhi/pronostico.csv` debe estar actualizado (hasta 24 h) para que el pronóstico cuente como vigente.
 
 Configuración y datos reales
 La primera ejecución crea `config.json` (localidad, umbral, área de captación, capacidad del depósito, demanda de riego).
